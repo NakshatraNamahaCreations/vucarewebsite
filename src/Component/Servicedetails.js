@@ -46,7 +46,7 @@ function Servicedetails() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/userapp/getservices"
+        "http://localhost:8008/api/userapp/getservices"
       );
       if (res.status === 200) {
         let subcategor = subcategory.toLowerCase();
@@ -62,21 +62,15 @@ function Servicedetails() {
       console.log(er, "err while fetching data");
     }
   };
+  const isMobileView = window.innerWidth < 768;
   const handlebookclick = (clickedItem) => {
-    const isMobileView = window.innerWidth < 768;
-
-    if (isMobileView) {
-      setItem(clickedItem);
-      setShowOffcanvas(true);
-    } else {
-      setItem(clickedItem);
-      setsubModel(true);
-    }
+    setItem(clickedItem);
+    setsubModel(true);
   };
 
   const getCity = async () => {
     try {
-      let res = await axios.get("http://api.thevucare.com/api/master/getcity");
+      let res = await axios.get("http://localhost:8008/api/master/getcity");
       if (res.status === 200) {
         setCity(res.data.mastercity);
       }
@@ -92,6 +86,11 @@ function Servicedetails() {
     setServiceIDD(sersid);
     setPrices(filteredData);
     setPriceId(hr);
+
+    if (isMobileView) {
+      setPriceId(hr);
+      setShowOffcanvas(true);
+    }
   };
 
   useEffect(() => {
@@ -109,7 +108,7 @@ function Servicedetails() {
 
   const getbannerimg = async () => {
     let res = await axios.get(
-      "http://api.thevucare.com/api/getallsubcatwebbanner"
+      "http://localhost:8008/api/getallsubcatwebbanner"
     );
     if ((res.status = 200)) {
       let filteredData = res.data.subcategoyrbanner.filter((Ele) =>
@@ -244,8 +243,8 @@ function Servicedetails() {
                         alt=""
                         className="header_logo res-header-logo brd p-0 m-auto"
                         src={Ele.img}
-                        width={100}
-                        height={240}
+                        width={200}
+                        height={320}
                       />
                     ))}
                 </>
@@ -254,8 +253,8 @@ function Servicedetails() {
                   <img
                     alt=""
                     className="header_logo res-header-logo brd p-0"
-                    src={`http://api.thevucare.com/subcatwebBanner/${Ele.banner}`}
-                    width={100}
+                    src={`http://localhost:8008/subcatwebBanner/${Ele.banner}`}
+                    width={200}
                     height={320}
                   />
                 ))
@@ -285,90 +284,95 @@ function Servicedetails() {
                             Duration {service?.serviceHour}
                           </span>
                         ) : null}
-                        <div className="row d-flex mt-3">
-                          <p style={{ color: "black", fontWeight: "bold" }}>
+                        <div className="row  mt-3">
+                          <p
+                            className="col-md-4"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             Start price
                           </p>
-                          {Price && Price.length > 0
-                            ? Price.flatMap((ele, priceIndex) => {
-                                if (
-                                  ServiceIDD === service._id &&
-                                  ele._id === PriceId
-                                ) {
-                                  return (
-                                    <div className="row" key={ele._id}>
-                                      {ele?.pofferprice?.includes(
-                                        "contact" ||
-                                          ele?.pPrice?.includes("contact")
-                                      ) ? (
-                                        <p className="text-green">
-                                          Please Contact For Price
-                                        </p>
-                                      ) : (
-                                        <>
-                                          <p
-                                            className="col-md-5 mx-2 price"
-                                            style={{
-                                              textDecorationLine:
-                                                "line-through",
-                                              color: "grey",
-                                            }}
-                                          >
-                                            Rs. {ele?.pPrice}
+                          <div className="col-md-8">
+                            {Price && Price.length > 0
+                              ? Price.flatMap((ele, priceIndex) => {
+                                  if (
+                                    ServiceIDD === service._id &&
+                                    ele._id === PriceId
+                                  ) {
+                                    return (
+                                      <div className="row" key={ele._id}>
+                                        {ele?.pofferprice?.includes(
+                                          "contact" ||
+                                            ele?.pPrice?.includes("contact")
+                                        ) ? (
+                                          <p className="text-green">
+                                            Please Contact For Price
                                           </p>
-                                          <p className="col-md-5 grndclr text-bolder">
-                                            Rs. {ele?.pofferprice}
-                                          </p>
-                                        </>
-                                      )}
-                                    </div>
-                                  );
-                                }
-                              })
-                            : ServiceID?.map((ele) => {
-                                if (ele === service._id) {
-                                  return DefaultPrice?.map((price) => {
-                                    if (service?.morepriceData) {
-                                      const filteredData =
-                                        service.morepriceData.find(
-                                          (data) => data._id === price?._id
-                                        );
+                                        ) : (
+                                          <>
+                                            <p
+                                              className="col-md-5 mx-1  price"
+                                              style={{
+                                                textDecorationLine:
+                                                  "line-through",
+                                                color: "grey",
+                                              }}
+                                            >
+                                              Rs. {ele?.pPrice}
+                                            </p>
+                                            <p className="col-md-5 grndclr text-bolder">
+                                              Rs. {ele?.pofferprice}
+                                            </p>
+                                          </>
+                                        )}
+                                      </div>
+                                    );
+                                  }
+                                })
+                              : ServiceID?.map((ele) => {
+                                  if (ele === service._id) {
+                                    return DefaultPrice?.map((price) => {
+                                      if (service?.morepriceData) {
+                                        const filteredData =
+                                          service.morepriceData.find(
+                                            (data) => data._id === price?._id
+                                          );
 
-                                      if (filteredData) {
-                                        return (
-                                          <div className="row" key={ele._id}>
-                                            {filteredData?.pofferprice?.includes(
-                                              "contact" ||
-                                                filteredData?.pPrice?.includes(
-                                                  "contact"
-                                                )
-                                            ) ? (
-                                              <p>Contact For Price</p>
-                                            ) : (
-                                              <>
-                                                <p
-                                                  className="col-md-4 mx-2 price"
-                                                  style={{
-                                                    textDecorationLine:
-                                                      "line-through",
-                                                    color: "grey",
-                                                  }}
-                                                >
-                                                  Rs. {filteredData?.pPrice}
-                                                </p>
-                                                <p className="col-md-4 grndclr text-bold">
-                                                  Rs.{" "}
-                                                  {filteredData?.pofferprice}
-                                                </p>
-                                              </>
-                                            )}
-                                          </div>
-                                        );
+                                        if (filteredData) {
+                                          return (
+                                            <div className="row " key={ele._id}>
+                                              {filteredData?.pofferprice?.includes(
+                                                "contact" ||
+                                                  filteredData?.pPrice?.includes(
+                                                    "contact"
+                                                  )
+                                              ) ? (
+                                                <p>Contact For Price</p>
+                                              ) : (
+                                                <>
+                                                  <p
+                                                    className="col-md-5  mx-2 price"
+                                                    style={{
+                                                      textDecorationLine:
+                                                        "line-through",
+                                                      color: "grey",
+                                                    }}
+                                                  >
+                                                    Rs. {filteredData?.pPrice}
+                                                  </p>
+                                                  <p className="col-md-5 grndclr text-bold">
+                                                    Rs.{" "}
+                                                    {filteredData?.pofferprice}
+                                                  </p>
+                                                </>
+                                              )}
+                                            </div>
+                                          );
+                                        }
                                       }
-                                    }
-                                  });
-                                }
-                              })}
+                                    });
+                                  }
+                                })}
+                          </div>
                         </div>
 
                         <div className="row">
@@ -417,7 +421,7 @@ function Servicedetails() {
                           width={200}
                           className="row mb-2 header_logo responsive-img"
                           height={150}
-                          src={`http://api.thevucare.com/service/${service?.serviceImg}`}
+                          src={`http://localhost:8008/service/${service?.serviceImg}`}
                           alt=""
                         />
                       </div>
@@ -429,19 +433,149 @@ function Servicedetails() {
             </div>
           </div>
           <div className="col-md-1"></div>
-          {ShowOffcanvas ? (
+          {isMobileView ? (
             <Offcanvas
+              style={{
+                height: "fit-content",
+                borderTopLeftRadius: "15px",
+                borderTopRightRadius: "15px",
+              }}
               placement="bottom"
+              siex
               show={ShowOffcanvas}
               onHide={handleBookingClose}
             >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                <Offcanvas.Title>Cart</Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
-                Some text as placeholder. In real life you can have the elements
-                you have chosen. Like, text, images, lists, etc.
-              </Offcanvas.Body>
+
+              <div className="row p-2">
+                {serviceData?.map((ele) => {
+                  if (ele._id.includes(ServiceIDD)) {
+                    return (
+                      <>
+                        <div className="row ">
+                          <p>{ele?.serviceName}</p>
+                        </div>
+                        <div
+                          className="row "
+                          style={{ border: "1px solid black" }}
+                        >
+                          <div className="col-md-2 m-auto valudwidth">
+                            {ele.morepriceData
+                              .filter((item) => item?._id === PriceId)
+                              .map((filteredElement) => (
+                                <p
+                                  key={filteredElement?._id}
+                                  className=" m-auto"
+                                >
+                                  {filteredElement?.pName}
+                                </p>
+                              ))}
+                          </div>
+                          <div className="col-md-6 valudwidth  m-auto">
+                            {ele.morepriceData
+                              .filter((item) => item?._id === PriceId)
+
+                              .map((filteredElement) => (
+                                <div className="row   m-auto ">
+                                  {filteredElement?.pofferprice?.includes(
+                                    "contact" ||
+                                      filteredElement?.pPrice?.includes(
+                                        "contact"
+                                      )
+                                  ) ? (
+                                    <p>Contact For Price</p>
+                                  ) : (
+                                    <>
+                                      <span className="col-md-6  m-auto real_price wrong_price">
+                                        {filteredElement?.pofferprice && "Rs."}{" "}
+                                        {filteredElement?.pofferprice}
+                                      </span>
+                                    </>
+                                  )}
+                                </div>
+                              ))}
+                          </div>
+                          <div className="col-md-4 valudwidth">
+                            <img
+                              className="brd  responsive-img"
+                              // width={300}
+                              height={50}
+                              src={`http://localhost:8008/service/${ele?.serviceImg}`}
+                              alt=""
+                            />
+                          </div>
+                        </div>
+
+                        {ele.morepriceData
+                          .filter((item) => item?._id === PriceId)
+
+                          .map((filteredElement) => (
+                            <div className="row   ">
+                              {filteredElement?.pofferprice?.includes(
+                                "contact" ||
+                                  filteredElement?.pPrice?.includes("contact")
+                              ) ? (
+                                <div className="row  m-2">
+                                  <button
+                                    onClick={() =>
+                                      sendWhatsAppMessage(filteredElement._id)
+                                    }
+                                    className="col-md-6 m-auto grndclr "
+                                    style={{
+                                      padding: "8px",
+                                      background: "gold",
+                                    }}
+                                  >
+                                    Enquire Now
+                                  </button>
+                                </div>
+                              ) : (
+                                <>
+                                  {PriceId !== null &&
+                                    PriceId !== undefined &&
+                                    ele._id === ServiceIDD && (
+                                      <div
+                                        className="m-auto text-center p-2"
+                                        style={{
+                                          display: "flex",
+                                          flexDirection: "column",
+                                          alignItems: "center",
+                                        }}
+                                      >
+                                        <Link
+                                          to="/viewcart"
+                                          state={{
+                                            passseviceid: ele._id,
+                                            bhk: PriceId,
+                                            selectecity: SelectedCity,
+                                          }}
+                                          key={ele.serviceName}
+                                          style={{ textDecoration: "none" }}
+                                        >
+                                          <button
+                                            className="grndclr"
+                                            style={{
+                                              width: "300px",
+                                              padding: "8px",
+                                              background: "gold",
+                                            }}
+                                          >
+                                            Continue
+                                          </button>
+                                        </Link>
+                                      </div>
+                                    )}
+                                </>
+                              )}
+                            </div>
+                          ))}
+                      </>
+                    );
+                  }
+                })}
+              </div>
             </Offcanvas>
           ) : (
             <div className="col-md-5 ">
@@ -470,7 +604,7 @@ function Servicedetails() {
                               className="brd row responsive-img"
                               width={300}
                               height={50}
-                              src={`http://api.thevucare.com/service/${ele?.serviceImg}`}
+                              src={`http://localhost:8008/service/${ele?.serviceImg}`}
                               alt=""
                             />
                             {/* </div> */}
@@ -652,7 +786,7 @@ function Servicedetails() {
                 <div className="row m-auto text-center ">
                   <img
                     className="col-md-5 m-auto p-0 mt-2 header_logo"
-                    src={`http://api.thevucare.com/service/${Item?.serviceImg}`}
+                    src={`http://localhost:8008/service/${Item?.serviceImg}`}
                     alt=""
                     height={200}
                   />

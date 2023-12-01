@@ -7,19 +7,23 @@ import Modal from "@mui/material/Modal";
 import axios from "axios";
 import NabarCompo from "../navbar";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Form } from "react-bootstrap";
+
 export default function Register() {
   const [name, setname] = useState("");
   const [Email, setemail] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [Password, setpassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [customrProfile, setcustomrProfile] = useState("");
 
   const [openOTP, setOpenOTP] = useState(false);
   const handleOTPModal = () => {
-    setOpenOTP(!openOTP);
+    setOpenOTP(false);
   };
   const [City, setCity] = useState([]);
   const [finished, setFinished] = useState(false);
+
   const getStart = () => {
     setFinished(!finished);
     setOpenOTP(false);
@@ -30,7 +34,15 @@ export default function Register() {
 
   const AddCustomers = async (e) => {
     e.preventDefault();
+    const formdata = new FormData();
+    formdata.append("customerprofile", customrProfile);
+    formdata.append("customerName", name);
+    formdata.append("mainContact", phonenumber);
+    formdata.append("email", Email);
+    formdata.append("city", selectedOption.city);
 
+    formdata.append("password", Password);
+    formdata.append("cpassword", ConfirmPassword);
     if (!name || !Email || !phonenumber || !Password || !ConfirmPassword) {
       alert("Please enter all details");
     } else {
@@ -38,16 +50,9 @@ export default function Register() {
         const config = {
           url: "/addcustomer",
           method: "post",
-          baseURL: "http://api.thevucare.com/api",
-          headers: { "Content-Type": "application/json" },
-          data: {
-            customerName: name,
-            mainContact: phonenumber,
-            email: Email,
-            city: selectedOption.city,
-            password: Password,
-            cpassword: ConfirmPassword,
-          },
+          baseURL: "http://localhost:8008/api",
+          headers: { "Content-Type": "multipart/form-data" },
+          data: formdata,
         };
 
         let res = await axios(config);
@@ -69,7 +74,10 @@ export default function Register() {
 
   const [openResetModal, setOpenResetModal] = useState(false);
   const handleResetModal = () => {
-    setOpenResetModal(!openResetModal);
+    setOpenResetModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenResetModal(false);
   };
 
   const handleChange = (e) => {
@@ -83,7 +91,7 @@ export default function Register() {
   });
   const getCity = async () => {
     try {
-      let res = await axios.get("http://api.thevucare.com/api/master/getcity");
+      let res = await axios.get("http://localhost:8008/api/master/getcity");
       if (res.status === 200) {
         setCity(res.data.mastercity);
       }
@@ -106,6 +114,14 @@ export default function Register() {
             </div>
             <div className="login_body">
               <div>
+                <Form.Label>Please Choose Profile</Form.Label>
+                <Form.Control
+                  type="file"
+                  placeholder="Name"
+                  // value={name}
+                  onChange={(e) => setcustomrProfile(e.target.files[0])}
+                />
+                {/* <p></p> */}
                 <input
                   type="text"
                   placeholder="Name"
@@ -167,7 +183,7 @@ export default function Register() {
               </div>
             </div> */}
 
-            <Modal open={openOTP} onClose={openOTP}>
+            <Modal open={openOTP} onClose={handleOTPModal}>
               <div className="modal_wrapper">
                 <div className="modal_header">
                   <div className="title">Verification</div>
@@ -233,7 +249,7 @@ export default function Register() {
             </Modal>
           </div>
         </div>
-        <Modal open={openResetModal} onClose={openResetModal}>
+        <Modal open={openResetModal} onClose={handleCloseModal}>
           <div className="modal_wrapper select-city-modal">
             <div className="modal_header">
               <div className="col-12">

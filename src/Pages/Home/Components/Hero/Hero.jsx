@@ -58,7 +58,7 @@ export default function Hero() {
   const getCity = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/master/getcity"
+        "http://localhost:8008/api/master/getcity"
       );
       if (res.status === 200) {
         setCity(res.data.mastercity);
@@ -69,7 +69,7 @@ export default function Hero() {
   };
   const getsubcategory = async () => {
     let res = await axios.get(
-      `http://api.thevucare.com/api/userapp/getappsubcat`
+      `http://localhost:8008/api/userapp/getappsubcat`
     );
 
     if ((res.status = 200)) {

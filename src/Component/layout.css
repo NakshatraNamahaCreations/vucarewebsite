@@ -325,7 +325,7 @@ button {
 }
 /* Mobile view styles */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 300px) and (max-width: 767px) {
   .slick-sliders {
     width: none;
     margin: auto;
@@ -357,6 +357,9 @@ button {
   }
   .medis1 {
     border-radius: 15px;
+  }
+  .pheading {
+    padding: 5px;
   }
 
   .firstcart {
@@ -431,5 +434,16 @@ button {
   }
   .rdiu2 {
     font-size: 13px;
+  }
+  .resfooter {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    justify-content: center;
+  }
+  .resfooter2 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
   }
 }

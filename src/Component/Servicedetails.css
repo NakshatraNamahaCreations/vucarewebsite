@@ -72,5 +72,7 @@
     height: 200px;
     border-radius: 2px;
   }
- 
+  .container_proud {
+    height: auto;
+  }
 }

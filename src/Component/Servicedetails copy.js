@@ -32,7 +32,7 @@ function Servicedetails() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/userapp/getservices"
+        "http://localhost:8008/api/userapp/getservices"
       );
       if (res.status === 200) {
         setserviceData(res.data.service);
@@ -72,7 +72,7 @@ function Servicedetails() {
 
   const getCity = async () => {
     try {
-      let res = await axios.get("http://api.thevucare.com/api/master/getcity");
+      let res = await axios.get("http://localhost:8008/api/master/getcity");
       if (res.status === 200) {
         setCity(res.data.mastercity);
       }
@@ -173,7 +173,7 @@ function Servicedetails() {
                       <img
                         width={20}
                         height={20}
-                      src={`http://api.thevucare.com/service/${i?.Eximg}`}
+                      src={`http://localhost:8008/service/${i?.Eximg}`}
                         alt=""
                       />{" "}
                       <p
@@ -201,7 +201,7 @@ function Servicedetails() {
                       <img
                         width={150}
                         height={130}
-                      src={`http://api.thevucare.com/service/${i?.serviceImg}`}
+                      src={`http://localhost:8008/service/${i?.serviceImg}`}
                         alt=""
                         style={{ borderRadius: "10px" }}
                       />
@@ -295,7 +295,7 @@ function Servicedetails() {
                       }}
                     >
                       <img
-                      src={`http://api.thevucare.com/subcat/${item.subcatimg}`}
+                      src={`http://localhost:8008/subcat/${item.subcatimg}`}
                         width="100%"
                         height="100px"
                       />

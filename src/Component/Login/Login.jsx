@@ -42,7 +42,7 @@ export default function Login() {
       const config = {
         url: "/usersign",
         method: "post",
-        baseURL: "http://api.thevucare.com/api",
+        baseURL: "http://localhost:8008/api",
         headers: { "Content-Type": "application/json" },
         data: {
           email: Email,

@@ -21,7 +21,7 @@ export default function Promo() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/userapp/getservices"
+        "http://localhost:8008/api/userapp/getservices"
       );
       if (res.status === 200) {
         setService(res.data.service);
@@ -34,7 +34,7 @@ export default function Promo() {
   const getVoucher = async () => {
     try {
       let res = await axios.get(
-        `http://api.thevucare.com/api/userapp/getvoucher`
+        `http://localhost:8008/api/userapp/getvoucher`
       );
       if (res.status === 200) {
         setVoucher(res.data.voucher);

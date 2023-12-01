@@ -38,7 +38,7 @@ export default function Layout() {
     try {
       setIsLoading(true);
       let res = await axios.get(
-        "http://api.thevucare.com/api/website/getallwebbanner"
+        "http://localhost:8008/api/website/getallwebbanner"
       );
 
       if (res.status === 200) {
@@ -65,7 +65,7 @@ export default function Layout() {
     try {
       setIsLoading(true);
       let res = await axios.get(
-        `http://api.thevucare.com/api/userapp/getappsubcat`
+        `http://localhost:8008/api/userapp/getappsubcat`
       );
 
       if ((res.status = 200)) {
@@ -87,7 +87,7 @@ export default function Layout() {
   const getAllCategory = async () => {
     try {
       setIsLoading(true);
-      let res = await axios.get("http://api.thevucare.com/api/getcategory");
+      let res = await axios.get("http://localhost:8008/api/getcategory");
       if (res.status === 200) {
         const firstInFirstOut = res.data.category.reverse();
         setCategory(firstInFirstOut);
@@ -310,7 +310,7 @@ export default function Layout() {
                       width={50}
                       height={50}
                       categoryImg
-                      src={`http://api.thevucare.com/category/${ele?.categoryImg}`}
+                      src={`http://localhost:8008/category/${ele?.categoryImg}`}
                       alt=""
                     />{" "}
                   </Link>
@@ -326,7 +326,7 @@ export default function Layout() {
             <div className="row  clr2 shadow p-5 ">
               <div className="row   text-center m-auto  ">
                 <div className="col-md-4 p-2 brclr medis1">
-                  <p className="row   fnt22 clr3 ">
+                  <p className="row   fnt22 clr3 pheading">
                     Our Motive Is To Make You Comfort In Your Home{" "}
                   </p>
                   <div className="row  m-auto">
@@ -346,7 +346,7 @@ export default function Layout() {
                           className="col-md-4  p-2  m-auto bg-white logostyl "
                           width={40}
                           height={40}
-                          src={`http://api.thevucare.com/category/${ele?.categoryImg}`}
+                          src={`http://localhost:8008/category/${ele?.categoryImg}`}
                           alt=""
                         />{" "}
                       </div>
@@ -375,11 +375,11 @@ export default function Layout() {
                     <div className="row">
                       <img
                         key={item._id}
-                        className="col-md-11 m-1  imgbnr  "
-                        // style={{ borderRadius: "20px" }}
+                        className="col-md-11 m-1  imgbnr  p-0"
+                        style={{ borderRadius: "20px" }}
                         width={380}
                         height={180}
-                        src={`http://api.thevucare.com/webBanner/${item.banner}`}
+                        src={`http://localhost:8008/webBanner/${item.banner}`}
                         alt=""
                       />
                     </div>
@@ -407,7 +407,7 @@ export default function Layout() {
                           <img
                             width={150}
                             height={150}
-                            src={`http://api.thevucare.com/subcat/${item?.subcatimg}`}
+                            src={`http://localhost:8008/subcat/${item?.subcatimg}`}
                             className=" m-1 shadow bg-white rounded "
                             alt=""
                           />
@@ -455,7 +455,7 @@ export default function Layout() {
                           <img
                             width={150}
                             height={150}
-                            src={`http://api.thevucare.com/subcat/${ele?.subcatimg}`}
+                            src={`http://localhost:8008/subcat/${ele?.subcatimg}`}
                             className=" m-1  shadow bg-white rounded "
                             alt=""
                           />
@@ -494,7 +494,7 @@ export default function Layout() {
                           <img
                             width={150}
                             height={150}
-                            src={`http://api.thevucare.com/subcat/${ele?.subcatimg}`}
+                            src={`http://localhost:8008/subcat/${ele?.subcatimg}`}
                             className=" m-1 shadow bg-white rounded "
                             alt=""
                           />
@@ -616,7 +616,7 @@ export default function Layout() {
                       >
                         <img
                           className="mt-2 brd"
-                          src={`http://api.thevucare.com/subcat/${item.subcatimg}`}
+                          src={`http://localhost:8008/subcat/${item.subcatimg}`}
                           width="100%"
                           height="100px"
                           alt=""

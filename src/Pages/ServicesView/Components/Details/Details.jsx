@@ -28,7 +28,7 @@
 //   const getAllCategory = async () => {
 //     try {
 //       let res = await axios.get(
-//         "http://api.thevucare.com/api/userapp/getappsubcat"
+//         "http://localhost:8008/api/userapp/getappsubcat"
 //       );
 //       if (res.status === 200) {
 //         setCategoryData(res.data.subcategory);
@@ -41,7 +41,7 @@
 //   const getAllSubsubCategory = async () => {
 //     try {
 //       let res = await axios.get(
-//         "http://api.thevucare.com/api/userapp/getappresubcat"
+//         "http://localhost:8008/api/userapp/getappresubcat"
 //       );
 //       if (res.status === 200) {
 //         setsubsubcategory(res.data.subcategory);
@@ -53,7 +53,7 @@
 
 //   const getCity = async () => {
 //     try {
-//       let res = await axios.get("http://api.thevucare.com/api/master/getcity");
+//       let res = await axios.get("http://localhost:8008/api/master/getcity");
 //       if (res.status === 200) {
 //         setCity(res.data.mastercity);
 //       }
@@ -178,7 +178,7 @@
 //                                 width={150}
 //                                 height={150}
 //                                 className="imgs "
-//                               src={`http://api.thevucare.com/resubcat/${Ele.resubcatimg}`}
+//                               src={`http://localhost:8008/resubcat/${Ele.resubcatimg}`}
 //                                 alt=""
 //                               />
 //                             </div>
@@ -199,7 +199,7 @@
 //                   <div key={Ele}>
 //                     <video width="440" height="260" autoPlay loop controls>
 //                       <source
-//                       src={`http://api.thevucare.com/subcat/${Ele?.subcatvideo}`}
+//                       src={`http://localhost:8008/subcat/${Ele?.subcatvideo}`}
 //                         type="video/mp4"
 //                       />
 //                     </video>

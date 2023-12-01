@@ -18,7 +18,7 @@ export default function PaintingServices() {
   const getAllCategory = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/userapp/getappsubcat"
+        "http://localhost:8008/api/userapp/getappsubcat"
       );
       if (res.status === 200) {
         let data = res.data.subcategory.filter((ele) =>
@@ -74,7 +74,7 @@ export default function PaintingServices() {
                         <img
                           width={200}
                           height={130}
-                        src={`http://api.thevucare.com/subcat/${ele?.subcatimg}`}
+                        src={`http://localhost:8008/subcat/${ele?.subcatimg}`}
                           alt=""
                         />
                       </div>

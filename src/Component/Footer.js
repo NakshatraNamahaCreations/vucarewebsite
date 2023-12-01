@@ -15,7 +15,7 @@ export default function Footer() {
     <>
       <div className="row mt-5 bg-dark text-white m-auto ">
         <div className="container ">
-          <div className="row p-3 slick-listsd">
+          <div className="row p-3 ">
             <div className="col-md-3">
               <div className="row ">
                 <div className="col-md-10 bg-white rounded brd">
@@ -33,63 +33,64 @@ export default function Footer() {
                 cleanlines meets care.
               </p>
             </div>
-            <div className="col-md-4">
-              <h2 className="row">Contact Us:</h2>
-              <li className="row">
-                {" "}
-                <div className="col-md-1">
-                  <span className=" m-auto">
-                    <AddIcCallIcon style={{ color: "white" }} />{" "}
-                  </span>
-                </div>
-                <div className="col-md-6">
-                  <span>+91 9980847384</span>
-                  <p>+91 9980847384</p>
-                </div>
-              </li>
-              <li className="row">
-                {" "}
-                <div className="col-md-1">
-                  <span className=" m-auto">
-                    <MailOutlineIcon style={{ color: "white" }} />{" "}
-                  </span>
-                </div>
-                <div className="col-md-6">
-                  <span>info@thevucare.com</span>
-                </div>
-              </li>
-              <li className="row">
-                {" "}
-                <div className="col-md-1">
-                  <span className=" m-auto">
-                    <LocationOnIcon style={{ color: "white" }} />{" "}
-                  </span>
-                </div>
-                <div className="col-md-6">
-                  <span>+91 9980847384</span>
-                  <p>+91 9980847384</p>
-                </div>
-              </li>
-            </div>
-            <div className="col-md-4">
-              <p className="row">Quick Links:</p>
-              <ul>
-                <li className="sty">Home</li>
-                <li className="sty">About Us</li>
-                <li className="sty">Services</li>
-                <li className="sty">Contact Us</li>
-              </ul>
-            </div>{" "}
-            <div className="col-md-1">
-              <a href="https://www.instagram.com/vucareservices/">
-                {/* <InstagramIcon style={{ fontSize: "45px", color: "red" }} /> */}
-                <img
-                  width={100}
-                  height={200}
-                  src="..\images\vucarinsal.png"
-                  alt=""
-                />
-              </a>
+            <div className="row resfooter2">
+              <div className="col-md-4   ">
+                <h2 className="row ">Contact Us:</h2>
+                <li className="row">
+                  {" "}
+                  <div className="col-md-1">
+                    <span className=" m-auto">
+                      <AddIcCallIcon style={{ color: "white" }} />{" "}
+                    </span>
+                  </div>
+                  <div className="col-md-6">
+                    <span>+91 9980847384</span>
+                    <p>+91 9980847384</p>
+                  </div>
+                </li>
+                <li className="row">
+                  {" "}
+                  <div className="col-md-1">
+                    <span className=" m-auto">
+                      <MailOutlineIcon style={{ color: "white" }} />{" "}
+                    </span>
+                  </div>
+                  <div className="col-md-6">
+                    <span>info@thevucare.com</span>
+                  </div>
+                </li>
+                <li className="row">
+                  {" "}
+                  <div className="col-md-1">
+                    <span className=" m-auto">
+                      <LocationOnIcon style={{ color: "white" }} />{" "}
+                    </span>
+                  </div>
+                  <div className="col-md-6">
+                    <span>+91 9980847384</span>
+                    <p>+91 9980847384</p>
+                  </div>
+                </li>
+              </div>
+              <div className="col-md-4 ">
+                <p className="row ">Quick Links:</p>
+                <ul>
+                  <li className="sty">Home</li>
+                  <li className="sty">About Us</li>
+                  <li className="sty">Services</li>
+                  <li className="sty">Contact Us</li>
+                </ul>
+              </div>{" "}
+              <div className="col-md-1">
+                <a href="https://www.instagram.com/vucareservices/">
+                  <img
+                    width={100}
+                    height={200}
+                    src="..\images\vucarinsal.png"
+                    alt=""
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -106,9 +107,9 @@ export default function Footer() {
           </div>
         </div> */}
 
-        <div className="col-md-4">
+        <div className="col-md-4 ">
           {" "}
-          <div className="row">
+          <div className="row resfooter">
             <div className="col-md-1 clr fnt me-2">
               <img
                 alt=""

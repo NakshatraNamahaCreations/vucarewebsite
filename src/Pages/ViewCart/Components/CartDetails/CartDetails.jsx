@@ -72,7 +72,7 @@ export default function CartDetails() {
   const [SelectedAddress, setSelectedAddress] = useState(null);
   const [allBookedServices, setallBookedServices] = useState(null);
 
-  console.log("selectedDate", selectedDate);
+  // console.log("selectedDate", selectedDate);
   useEffect(() => {
     getAllServices();
     getVoucher();
@@ -112,7 +112,7 @@ export default function CartDetails() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/userapp/getservices"
+        "http://localhost:8008/api/userapp/getservices"
       );
       if (res.status === 200) {
         setService(res.data.service);
@@ -137,7 +137,7 @@ export default function CartDetails() {
 
   const getVoucher = async () => {
     try {
-      let res = await axios.get(`http://api.thevucare.com/api/userapp/getvoucher`);
+      let res = await axios.get(`http://localhost:8008/api/userapp/getvoucher`);
       if (res.status === 200) {
         setVoucher(res.data.voucher);
       }
@@ -322,7 +322,7 @@ export default function CartDetails() {
   const getAddons = async () => {
     try {
       let res = await axios.get(
-        `http://api.thevucare.com/api/userapp/getServiceAddOns`
+        `http://localhost:8008/api/userapp/getServiceAddOns`
       );
       if (res.status === 200) {
         setAddOn(res?.data?.AddOns);
@@ -381,7 +381,7 @@ export default function CartDetails() {
   //         const config = {
   //           url: "/addenquiry",
   //           method: "post",
-  //           baseURL: "http://api.thevucare.com/api",
+  //           baseURL: "http://localhost:8008/api",
 
   //           headers: { "content-type": "application/json" },
   //           data: {
@@ -428,7 +428,7 @@ export default function CartDetails() {
   //     const config = {
   //       url: "/addenquiryfollowup",
   //       method: "post",
-  //       baseURL: "http://api.thevucare.com/api",
+  //       baseURL: "http://localhost:8008/api",
 
   //       headers: { "content-type": "application/json" },
   //       data: {
@@ -517,7 +517,7 @@ export default function CartDetails() {
   const getServiceDetails = async () => {
     try {
       const response = await axios.get(
-        `http://api.thevucare.com/api/getservicedetails`
+        `http://localhost:8008/api/getservicedetails`
       );
       if (response.status === 200) {
         let filtredServices = response.data.servicedetails.filter(
@@ -555,7 +555,7 @@ export default function CartDetails() {
 
         const config = {
           url: `/addservicedetails`,
-          baseURL: "http://api.thevucare.com/api",
+          baseURL: "http://localhost:8008/api",
           headers: { "content-type": "application/json" },
           method: "post",
           data: {
@@ -631,7 +631,7 @@ export default function CartDetails() {
       };
       const config = {
         url: `/addcustomerAddress`,
-        baseURL: "http://api.thevucare.com/api",
+        baseURL: "http://localhost:8008/api",
         headers: { "content-type": "application/json" },
         method: "post",
         data: deliveryAddress,
@@ -658,7 +658,7 @@ export default function CartDetails() {
   const getDeliveryAddres = async () => {
     try {
       const response = await axios.get(
-        "http://api.thevucare.com/api/getalladress"
+        "http://localhost:8008/api/getalladress"
       );
       if (response.status === 200) {
         let Address = response?.data?.data
@@ -674,10 +674,6 @@ export default function CartDetails() {
 
   return (
     <>
-      {/* <a href="/servicedetails" className="ms-4">
-        <ArrowCircleLeftIcon />
-      </a> */}
-
       <div className="cart_heading">
         <div className="container">
           <div className="row mb-4">
@@ -707,21 +703,6 @@ export default function CartDetails() {
               <h3>View Service Cart</h3>
               <p> items added</p>
             </div>
-
-            {/* <div className="action">
-              <button className="button1">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.7368 9.26313H1.26316C0.928829 9.26093 0.608821 9.12713 0.372409 8.89072C0.135998 8.65431 0.00220686 8.3343 0 7.99997C0.00220686 7.66565 0.135998 7.34564 0.372409 7.10923C0.608821 6.87281 0.928829 6.73902 1.26316 6.73682H14.7368C15.0712 6.73902 15.3912 6.87281 15.6276 7.10923C15.864 7.34564 15.9978 7.66565 16 7.99997C15.9978 8.3343 15.864 8.65431 15.6276 8.89072C15.3912 9.12713 15.0712 9.26093 14.7368 9.26313Z" />
-                  <path d="M6.73684 14.7368L6.73684 1.26313C6.73905 0.928803 6.87284 0.608795 7.10925 0.372383C7.34566 0.135972 7.66567 0.00218104 8 -2.58044e-05C8.33433 0.00218107 8.65434 0.135972 8.89075 0.372383C9.12716 0.608795 9.26095 0.928803 9.26316 1.26313L9.26316 14.7368C9.26095 15.0711 9.12716 15.3912 8.89075 15.6276C8.65434 15.864 8.33433 15.9978 8 16C7.66567 15.9978 7.34566 15.864 7.10925 15.6276C6.87284 15.3912 6.73905 15.0711 6.73684 14.7368Z" />
-                </svg>
-                Add More Service
-              </button>
-            </div> */}
           </div>
         </div>
       </div>
@@ -729,21 +710,20 @@ export default function CartDetails() {
       <section className="cart_details">
         <div className="container">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-8 ">
               {cartData?.map((ele) => (
                 <div className="cart_item_box">
                   <div className="item_title">{ele?.serviceName}</div>
-                  <div className="item_content">
+                  <div className="item_content  ">
                     <div className="left">
-                      <div className="left_img">
+                      <div className="left_img ">
                         <img
-                          src={`http://api.thevucare.com/service/${ele?.serviceImg}`}
+                          src={`http://localhost:8008/service/${ele?.serviceImg}`}
                           alt=""
                         />
                       </div>
 
-                      <div className="texts">
-                        <h4>{ele.servicetitle}</h4>
+                      <div className="texts ">
                         {ele.morepriceData
                           .filter((item) => item?._id === bhk)
                           .map((filteredElement) => (
@@ -753,24 +733,22 @@ export default function CartDetails() {
                           ))}
                       </div>
                     </div>
-                    <div className="col-md-5">
-                      {/* <div className="row right"> */}
+                    <div className="col-md-5 m-auto ">
                       {ele.morepriceData
                         .filter((item) => item?._id === bhk)
 
                         .map((filteredElement) => (
-                          <div className="row   ">
-                            <span className="col-md-6 m-auto wrong_price ">
+                          <div className="row valudwidth1  m-auto">
+                            <span className="col-md-6 m-auto valudwidth1 wrong_price ">
                               {filteredElement?.pPrice && "Rs."}{" "}
                               {filteredElement?.pPrice}
                             </span>
-                            <span className="col-md-6 m-auto real_price">
+                            <span className="col-md-6 m-auto valudwidth1 real_price ">
                               {filteredElement?.pPrice && "Rs."}{" "}
                               {filteredElement?.pofferprice}
                             </span>
                           </div>
                         ))}
-                      {/* </div> */}
                     </div>
                     <div className="col-md-2 ">
                       <Form.Control
@@ -1069,7 +1047,6 @@ export default function CartDetails() {
                 </div>
               </Modal>
 
-              {/* {isSurvey || isEnquiry ? null : ( */}
               <div className="payment">
                 <div className="title">Payment Method</div>
                 <div className="payment">
@@ -1086,19 +1063,6 @@ export default function CartDetails() {
                       </label>
                     </div>
                   </div>
-                  {/* <div className="options price">
-                      <div className="remember">
-                        <label
-                          className="check_container"
-                          onClick={() => handleOptionClick("option2")}
-                        >
-                          Pay from Wallet
-                          <input type="radio" id="option2" />
-                          <span className="checkmark"></span>
-                        </label>
-                      </div>
-                      <div className="p_text">Rs 6000</div>
-                    </div> */}
                   <div className="options">
                     <div className="remember">
                       <label
@@ -1113,80 +1077,23 @@ export default function CartDetails() {
                     </div>{" "}
                   </div>{" "}
                 </div>
-                {/* <form autoComplete="off">
-                    <div className="card_details">
-                      <div className="row">
-                        <div className="col-md-6">
-                          <input
-                            type="text"
-                            onChange={(e) => setcardNumber(e.target.value)}
-                            placeholder="Card Number"
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <input
-                            type="text"
-                            onChange={(e) => setNameOnCard(e.target.value)}
-                            placeholder="Name on Card"
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <input
-                            type="text"
-                            onChange={(e) => setcardexpiryDate(e.target.value)}
-                            placeholder="Exp. Date*"
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <input
-                            type="text"
-                            onChange={(e) => setcvv(e.target.value)}
-                            placeholder="CVV"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </form> */}
-                {/* <div className="card_no">
-                    <div className="remember">
-                      <label className="check_container">
-                        <div className="card_no_wrapper">
-                          <img src={Card} alt="" />
-                          <span className="hidden_no">************</span>
-                          <span className="highlight">436</span>
-                        </div>
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                    </div>
-                  </div> */}
               </div>
-              {/* )} */}
             </div>
 
             <div className="col-md-4">
-              {/* {filteredAddons.length > 0 && ( */}
-              <>
-                {/* <div className="addon_title">Add On Services</div> */}
-                <div className="addon_text">
-                  Add on Services booking is only valid after booking of Deep
-                  cleaning services
-                </div>
-              </>
-              {/* )} */}
+              <div className="addon_text">
+                Add on Services booking is only valid after booking of Deep
+                cleaning services
+              </div>
+
               {filteredAddons?.map((addon) => (
                 <div className="addon mt-3">
                   <div className="addon_box">
                     <div className="addon_image">
                       <img
-                        src={`http://api.thevucare.com/addOns/${addon?.addOnsImage}`}
+                        src={`http://localhost:8008/addOns/${addon?.addOnsImage}`}
                         alt=""
                       />
-
-                      {/* <div className="offer">
-                        {" "}
-                        Up to {addon.addOnsOfferPrice}% OFF
-                      </div> */}
                     </div>
                     <div className="addon_details">
                       <div className="left">
@@ -1249,19 +1156,7 @@ export default function CartDetails() {
                   </div>
                 </div>
               ))} */}
-              {/* <div className="promo mt-5">
-                <div className="title">Promo / Coupon Code</div>
-                <form autoComplete="off">
-                  <input
-                    type="text"
-                    value={coupancode}
-                    placeholder="Enter Promocode*"
-                  />
-                  <button className="button1" type="submit">
-                    Submit Now
-                  </button>
-                </form>
-              </div> */}
+
               <div className="summary">
                 <div className="title">Summary</div>
                 <div className="summary_points">
@@ -1303,54 +1198,32 @@ export default function CartDetails() {
           </div>
         </div>
 
-        {/* <div className="pay_wrapper">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-8">
-                <div className="date">
-                  Fri , 24 Feb, 2023 - <span> 9:30 am</span>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <button
-                  style={{ fontSize: "25px" }}
-                  onClick={addenquiry}
-                  className="goto_pay p-3 button1"
-                >
-                  BOOK
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <div className="pay_wrapper">
           <div className="container">
             <div className="row">
               <div className="col-md-6">
                 <div className="date">
                   {result}- <span className="colr"> {time}</span>
-                  {/* Fri , 24 Feb, 2023 - <span> 9:30 am</span> */}
                 </div>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2  btun">
                 <Link
                   style={{ textDecoration: "none" }}
                   to="/booking"
                   state={{ idd: passseviceid, planBHk: bhk }}
                 >
-                  <button className="button1" type="submit">
+                  <button className="button1 p-2" type="submit">
                     View Booking
                   </button>
                 </Link>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4  btun">
                 <button
                   style={{ fontSize: "25px" }}
                   onClick={handleBookservices}
-                  className="goto_pay p-3 button1"
+                  className="goto_pay p-2 button1 marlef"
                 >
-                  <span className="me-4 "> Pay</span>
+                  <span className="me-4  "> Pay</span>
                   <span className="">
                     {new Intl.NumberFormat("en-IN", {
                       style: "currency",
