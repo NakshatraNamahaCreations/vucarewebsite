@@ -13,7 +13,7 @@ export default function ServicesList() {
 
   const getsubcategory = async () => {
     let res = await axios.get(
-      `http://api.thevucare.com/api/userapp/getappsubcat`
+      `https://api.thevucare.com/api/userapp/getappsubcat`
     );
 
     if ((res.status = 200)) {
@@ -63,7 +63,7 @@ export default function ServicesList() {
                   width={60}
                   height={60}
                   style={{ borderRadius: "5px" }}
-                src={`http://api.thevucare.com/subcat/${item?.subcatimg}`}
+                src={`https://api.thevucare.com/subcat/${item?.subcatimg}`}
                   alt=""
                 />
 
