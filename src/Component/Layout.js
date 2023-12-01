@@ -183,23 +183,26 @@ export default function Layout() {
         breakpoint: 800,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
+          adaptiveHeight: true,
+          centerMode: true,
           dots: true,
           arrows: true,
+          lazyLoad: "ondemand",
         },
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
+          adaptiveHeight: true,
+          centerMode: true,
           dots: true,
           arrows: true,
+          lazyLoad: "ondemand",
         },
       },
     ],
   };
-
   const [showModal, setShowModal] = useState(false);
 
   const handleShow = () => {
@@ -366,16 +369,20 @@ export default function Layout() {
                 </button>{" "}
               </div>
 
-              <div className="row mt-3  slick-listsd slick-listsd1 slick-sliders    just-for-you-slider">
+              <div className="row mt-3 m-auto slick-listsd  slick-sliders  just-for-you-slider">
                 <Slider {...justforyou}>
                   {Banner.map((item) => (
-                    <img
-                      key={item._id}
-                      className="col-md-11 m-1 imgbnr"
-                      height={180}
-                      src={`http://api.thevucare.com/webBanner/${item.banner}`}
-                      alt=""
-                    />
+                    <div className="row">
+                      <img
+                        key={item._id}
+                        className="col-md-11 m-1  imgbnr  "
+                        // style={{ borderRadius: "20px" }}
+                        width={380}
+                        height={180}
+                        src={`http://api.thevucare.com/webBanner/${item.banner}`}
+                        alt=""
+                      />
+                    </div>
                   ))}
                 </Slider>
               </div>

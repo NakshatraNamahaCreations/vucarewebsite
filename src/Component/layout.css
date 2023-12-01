@@ -80,15 +80,12 @@ a,
   display: none !important;
 }
 
-.slick-sliders .common-slider {
+.slick-sliders {
   width: auto;
   margin: auto;
 }
-.slick-slidersjust {
-  display: flex;
-  justify-content: space-around;
-}
-.slick-listsd .common-slider{
+
+.slick-listsd {
   display: flex;
   justify-content: space-around;
 }
