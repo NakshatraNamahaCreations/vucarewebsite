@@ -112,7 +112,7 @@ export default function CartDetails() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "http://localhost:8008/api/userapp/getservices"
+        "http://api.thevucare.com/api/userapp/getservices"
       );
       if (res.status === 200) {
         setService(res.data.service);
@@ -137,7 +137,7 @@ export default function CartDetails() {
 
   const getVoucher = async () => {
     try {
-      let res = await axios.get(`http://localhost:8008/api/userapp/getvoucher`);
+      let res = await axios.get(`http://api.thevucare.com/api/userapp/getvoucher`);
       if (res.status === 200) {
         setVoucher(res.data.voucher);
       }
@@ -322,7 +322,7 @@ export default function CartDetails() {
   const getAddons = async () => {
     try {
       let res = await axios.get(
-        `http://localhost:8008/api/userapp/getServiceAddOns`
+        `http://api.thevucare.com/api/userapp/getServiceAddOns`
       );
       if (res.status === 200) {
         setAddOn(res?.data?.AddOns);
@@ -381,7 +381,7 @@ export default function CartDetails() {
   //         const config = {
   //           url: "/addenquiry",
   //           method: "post",
-  //           baseURL: "http://localhost:8008/api",
+  //           baseURL: "http://api.thevucare.com/api",
 
   //           headers: { "content-type": "application/json" },
   //           data: {
@@ -428,7 +428,7 @@ export default function CartDetails() {
   //     const config = {
   //       url: "/addenquiryfollowup",
   //       method: "post",
-  //       baseURL: "http://localhost:8008/api",
+  //       baseURL: "http://api.thevucare.com/api",
 
   //       headers: { "content-type": "application/json" },
   //       data: {
@@ -517,7 +517,7 @@ export default function CartDetails() {
   const getServiceDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8008/api/getservicedetails`
+        `http://api.thevucare.com/api/getservicedetails`
       );
       if (response.status === 200) {
         let filtredServices = response.data.servicedetails.filter(
@@ -555,7 +555,7 @@ export default function CartDetails() {
 
         const config = {
           url: `/addservicedetails`,
-          baseURL: "http://localhost:8008/api",
+          baseURL: "http://api.thevucare.com/api",
           headers: { "content-type": "application/json" },
           method: "post",
           data: {
@@ -631,7 +631,7 @@ export default function CartDetails() {
       };
       const config = {
         url: `/addcustomerAddress`,
-        baseURL: "http://localhost:8008/api",
+        baseURL: "http://api.thevucare.com/api",
         headers: { "content-type": "application/json" },
         method: "post",
         data: deliveryAddress,
@@ -658,7 +658,7 @@ export default function CartDetails() {
   const getDeliveryAddres = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8008/api/getalladress"
+        "http://api.thevucare.com/api/getalladress"
       );
       if (response.status === 200) {
         let Address = response?.data?.data
@@ -718,7 +718,7 @@ export default function CartDetails() {
                     <div className="left">
                       <div className="left_img ">
                         <img
-                          src={`http://localhost:8008/service/${ele?.serviceImg}`}
+                          src={`http://api.thevucare.com/service/${ele?.serviceImg}`}
                           alt=""
                         />
                       </div>
@@ -1091,7 +1091,7 @@ export default function CartDetails() {
                   <div className="addon_box">
                     <div className="addon_image">
                       <img
-                        src={`http://localhost:8008/addOns/${addon?.addOnsImage}`}
+                        src={`http://api.thevucare.com/addOns/${addon?.addOnsImage}`}
                         alt=""
                       />
                     </div>

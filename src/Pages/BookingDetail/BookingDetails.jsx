@@ -31,7 +31,7 @@ export default function BookingDetails() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `http://localhost:8008/api/getservicedetails`
+        `http://api.thevucare.com/api/getservicedetails`
       );
       if (response.status === 200) {
         let filtredServices = response?.data?.servicedetails?.filter(
@@ -50,7 +50,7 @@ export default function BookingDetails() {
     try {
       setIsLoading(true);
       let res = await axios.get(
-        "http://localhost:8008/api/userapp/getservices"
+        "http://api.thevucare.com/api/userapp/getservices"
       );
       if (res.status === 200) {
         let data = res?.data?.service;
@@ -142,7 +142,7 @@ export default function BookingDetails() {
                             <div className="left">
                               <div className="left_img">
                                 <img
-                                  src={`http://localhost:8008/service/${serviceIMg}`}
+                                  src={`http://api.thevucare.com/service/${serviceIMg}`}
                                   alt=""
                                 />
                               </div>

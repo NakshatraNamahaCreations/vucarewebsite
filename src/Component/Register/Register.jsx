@@ -50,7 +50,7 @@ export default function Register() {
         const config = {
           url: "/addcustomer",
           method: "post",
-          baseURL: "http://localhost:8008/api",
+          baseURL: "http://api.thevucare.com/api",
           headers: { "Content-Type": "multipart/form-data" },
           data: formdata,
         };
@@ -91,7 +91,7 @@ export default function Register() {
   });
   const getCity = async () => {
     try {
-      let res = await axios.get("http://localhost:8008/api/master/getcity");
+      let res = await axios.get("http://api.thevucare.com/api/master/getcity");
       if (res.status === 200) {
         setCity(res.data.mastercity);
       }

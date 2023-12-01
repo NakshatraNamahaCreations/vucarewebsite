@@ -36,7 +36,7 @@ export default function Booking() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `http://localhost:8008/api/getservicedetails`
+        `http://api.thevucare.com/api/getservicedetails`
       );
       if (response.status === 200) {
         let filtredServices = response.data.servicedetails.filter(
@@ -56,7 +56,7 @@ export default function Booking() {
     try {
       setIsLoading(true);
       let res = await axios.get(
-        "http://localhost:8008/api/userapp/getservices"
+        "http://api.thevucare.com/api/userapp/getservices"
       );
       if (res.status === 200) {
         let data = res?.data?.service;
@@ -105,7 +105,7 @@ export default function Booking() {
     try {
       setIsLoading(true);
       let res = await axios.get(
-        `http://localhost:8008/api/userapp/getappsubcat`
+        `http://api.thevucare.com/api/userapp/getappsubcat`
       );
 
       if ((res.status = 200)) {
@@ -222,7 +222,7 @@ export default function Booking() {
                               <div className="tab_ser">
                                 <div className="tab_img">
                                   <img
-                                    src={`http://localhost:8008/service/${Serivid?.serviceImg}`}
+                                    src={`http://api.thevucare.com/service/${Serivid?.serviceImg}`}
                                     alt=""
                                   />
                                 </div>
@@ -243,7 +243,7 @@ export default function Booking() {
                                         width={60}
                                         height={60}
                                         style={{ borderRadius: "5px" }}
-                                        src={`http://localhost:8008/addOns/${item?.addOnsImage}`}
+                                        src={`http://api.thevucare.com/addOns/${item?.addOnsImage}`}
                                         alt=""
                                       />{" "}
                                     </div>
@@ -283,7 +283,7 @@ export default function Booking() {
                                 <div className="tab_ser">
                                   <div className="tab_img">
                                     <img
-                                      src={`http://localhost:8008/service/${Serivid?.serviceImg}`}
+                                      src={`http://api.thevucare.com/service/${Serivid?.serviceImg}`}
                                       alt=""
                                     />
                                   </div>
@@ -303,7 +303,7 @@ export default function Booking() {
                                           width={60}
                                           height={60}
                                           style={{ borderRadius: "5px" }}
-                                          src={`http://localhost:8008/addOns/${item?.addOnsImage}`}
+                                          src={`http://api.thevucare.com/addOns/${item?.addOnsImage}`}
                                           alt=""
                                         />{" "}
                                       </div>
