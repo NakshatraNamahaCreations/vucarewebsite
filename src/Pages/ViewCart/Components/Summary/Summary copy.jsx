@@ -14,7 +14,7 @@ export default function Summary() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "https://api.thevucare.com/api/userapp/getservices"
+        "http://api.thevucare.com/api/userapp/getservices"
       );
       if (res.status === 200) {
         setService(res.data.service);

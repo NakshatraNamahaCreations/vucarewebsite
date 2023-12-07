@@ -107,7 +107,7 @@ export default function Footer() {
           </div>
         </div> */}
 
-        <div className="col-md-4 ">
+        {/* <div className="col-md-4 ">
           {" "}
           <div className="row resfooter">
             <div className="col-md-1 clr fnt me-2">
@@ -147,7 +147,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

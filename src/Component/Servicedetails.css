@@ -40,15 +40,15 @@
   color: #fff;
 }
 .container_proud {
-  height: 80vh;
+  height: auto;
   overflow: auto;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
-.container_proud::-webkit-scrollbar {
+/* .container_proud::-webkit-scrollbar {
   display: none;
-}
+} */
 .header_logo {
   border: 1px solid rgba(0, 0, 0, 0.651);
   border-radius: 20px;

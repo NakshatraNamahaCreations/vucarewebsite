@@ -19,7 +19,7 @@ export default function JustForYou() {
   const GetAllWebBanner = async () => {
     try {
       let res = await axios.get(
-        "https://api.thevucare.com/api/website/getallwebbanner"
+        "http://api.thevucare.com/api/website/getallwebbanner"
       );
 
       if (res.status === 200) {
@@ -67,7 +67,7 @@ export default function JustForYou() {
               <div className="slide " key={index}>
                 {/* <NavLink to={`/ServicesView?id=${ele._id}`} className="jf_box"> */}
                 <img
-                src={`https://api.thevucare.com/webBanner/${ele?.banner}`}
+                src={`http://api.thevucare.com/webBanner/${ele?.banner}`}
                   alt={`Slide ${ele?.id}`}
                   className="slider-image"
                 />

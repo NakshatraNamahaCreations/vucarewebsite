@@ -17,7 +17,7 @@ export default function PestServices() {
   const getAllCategory = async () => {
     try {
       let res = await axios.get(
-        "https://api.thevucare.com/api/userapp/getappsubcat"
+        "http://api.thevucare.com/api/userapp/getappsubcat"
       );
       if (res.status === 200) {
         let data = res.data.subcategory.filter((ele) =>
@@ -68,7 +68,7 @@ export default function PestServices() {
                       <img
                         width={160}
                         height={130}
-                      src={`https://api.thevucare.com/subcat/${ele?.subcatimg}`}
+                      src={`http://api.thevucare.com/subcat/${ele?.subcatimg}`}
                         alt=""
                       />
                     </div>

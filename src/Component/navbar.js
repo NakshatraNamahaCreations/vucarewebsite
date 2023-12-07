@@ -44,17 +44,71 @@ export default function NabarCompo() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav wiauto" />
         <Navbar.Collapse className="justify-content-end">
+          <Nav>
+            <a href="https://www.instagram.com/vucareservices/">
+              <img
+                className="clrc"
+                alt=""
+                src="..\images\wicon1 (2).png"
+                width={65}
+                height={65}
+              />
+            </a>
+          </Nav>
+          <Nav>
+            <img
+              alt=""
+              className="cursor-pointer clrc"
+              onClick={openWhatsapp}
+              src="..\images\wicon1 (1).png"
+              width={50}
+              height={50}
+            />
+          </Nav>
+          <Nav>
+            <a
+              className="clr fnt me-2"
+              href="https://www.facebook.com/vucareservices?mibextid=kFxxJD"
+            >
+              <img
+                className="clrc"
+                alt=""
+                src="..\images\wicon1 (3).png"
+                width={50}
+                height={50}
+              />
+            </a>
+          </Nav>
           <Nav className="clr fnt me-2">
             <a href={`tel:${phoneNumber}`} className="text-decoration-none">
               <Button variant="outlined" size="medium">
                 <span className="me-2">
                   <WifiCalling3Icon style={{ color: "skyblue" }} />
                 </span>{" "}
-                <span className="text-dark">+91 9980670037</span>
+                <span className="text-dark">+917760120037</span>
               </Button>
             </a>
           </Nav>
-
+          <Nav className="clr fnt me-2">
+            <a href={`tel:${phoneNumber}`} className="text-decoration-none">
+              <Button variant="outlined" size="medium">
+                <span className="me-2">
+                  <WifiCalling3Icon style={{ color: "skyblue" }} />
+                </span>{" "}
+                <span className="text-dark">+917337744156 </span>
+              </Button>
+            </a>
+          </Nav>{" "}
+          <Nav className="clr fnt me-2">
+            <a href={`tel:${phoneNumber}`} className="text-decoration-none">
+              <Button variant="outlined" size="medium">
+                <span className="me-2">
+                  <WifiCalling3Icon style={{ color: "skyblue" }} />
+                </span>{" "}
+                <span className="text-dark">+919980670037 </span>
+              </Button>
+            </a>
+          </Nav>
           {userData !== null && userData !== undefined ? (
             <Nav className="clr fnt me-2 " onClick={handleShow}>
               <Button
@@ -65,7 +119,7 @@ export default function NabarCompo() {
                 <img
                   width={30}
                   height={30}
-                  src={`https://api.thevucare.com/customer/${userData?.customerprofile}`}
+                  src={`http://api.thevucare.com/customer/${userData?.customerprofile}`}
                   className="me-2"
                   alt=""
                   style={{ borderRadius: "100px" }}
@@ -76,7 +130,7 @@ export default function NabarCompo() {
           ) : (
             <Nav className="clr fnt ">
               <Button
-                className="text-dark responvm   me-2"
+                className="text-dark responvm   me-1"
                 variant="outlined"
                 size="medium"
                 href="/login"
@@ -84,7 +138,7 @@ export default function NabarCompo() {
                 Login
               </Button>
               <Button
-                className="text-dark  responvm  me-2"
+                className="text-dark  responvm  me-1"
                 variant="outlined"
                 size="medium"
                 href="/register"

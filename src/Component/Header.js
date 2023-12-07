@@ -26,7 +26,7 @@ export default function Header() {
   const getsubcategory = async () => {
     try {
       let res = await axios.get(
-        `https://api.thevucare.com/api/userapp/getappsubcat`
+        `http://api.thevucare.com/api/userapp/getappsubcat`
       );
 
       if ((res.status = 200)) {
@@ -38,7 +38,7 @@ export default function Header() {
   };
   const getCity = async () => {
     try {
-      let res = await axios.get("https://api.thevucare.com/api/master/getcity");
+      let res = await axios.get("http://api.thevucare.com/api/master/getcity");
       if (res.status === 200) {
         setCity(res.data.mastercity);
       }

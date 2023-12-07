@@ -18,7 +18,7 @@ export default function AddOn() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "https://api.thevucare.com/api/userapp/getservices"
+        "http://api.thevucare.com/api/userapp/getservices"
       );
       if (res.status === 200) {
         setService(res?.data?.service);
@@ -30,7 +30,7 @@ export default function AddOn() {
   const getAddons = async () => {
     try {
       let res = await axios.get(
-        `https://api.thevucare.com/api/userapp/getServiceAddOns`
+        `http://api.thevucare.com/api/userapp/getServiceAddOns`
       );
       if (res.status === 200) {
         setAddOn(

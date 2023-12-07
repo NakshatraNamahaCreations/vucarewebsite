@@ -46,7 +46,7 @@ function Servicedetails() {
   const getAllServices = async () => {
     try {
       let res = await axios.get(
-        "https://api.thevucare.com/api/userapp/getservices"
+        "http://api.thevucare.com/api/userapp/getservices"
       );
       if (res.status === 200) {
         let subcategor = subcategory.toLowerCase();
@@ -70,7 +70,7 @@ function Servicedetails() {
 
   const getCity = async () => {
     try {
-      let res = await axios.get("https://api.thevucare.com/api/master/getcity");
+      let res = await axios.get("http://api.thevucare.com/api/master/getcity");
       if (res.status === 200) {
         setCity(res.data.mastercity);
       }
@@ -108,7 +108,7 @@ function Servicedetails() {
 
   const getbannerimg = async () => {
     let res = await axios.get(
-      "https://api.thevucare.com/api/getallsubcatwebbanner"
+      "http://api.thevucare.com/api/getallsubcatwebbanner"
     );
     if ((res.status = 200)) {
       let filteredData = res.data.subcategoyrbanner.filter((Ele) =>
@@ -253,7 +253,7 @@ function Servicedetails() {
                   <img
                     alt=""
                     className="header_logo res-header-logo brd p-0"
-                    src={`https://api.thevucare.com/subcatwebBanner/${Ele.banner}`}
+                    src={`http://api.thevucare.com/subcatwebBanner/${Ele.banner}`}
                     width={200}
                     height={320}
                   />
@@ -421,7 +421,7 @@ function Servicedetails() {
                           width={200}
                           className="row mb-2 header_logo responsive-img"
                           height={150}
-                          src={`https://api.thevucare.com/service/${service?.serviceImg}`}
+                          src={`http://api.thevucare.com/service/${service?.serviceImg}`}
                           alt=""
                         />
                       </div>
@@ -502,7 +502,7 @@ function Servicedetails() {
                               className="brd  responsive-img"
                               // width={300}
                               height={50}
-                              src={`https://api.thevucare.com/service/${ele?.serviceImg}`}
+                              src={`http://api.thevucare.com/service/${ele?.serviceImg}`}
                               alt=""
                             />
                           </div>
@@ -604,7 +604,7 @@ function Servicedetails() {
                               className="brd row responsive-img"
                               width={300}
                               height={50}
-                              src={`https://api.thevucare.com/service/${ele?.serviceImg}`}
+                              src={`http://api.thevucare.com/service/${ele?.serviceImg}`}
                               alt=""
                             />
                             {/* </div> */}
@@ -786,7 +786,7 @@ function Servicedetails() {
                 <div className="row m-auto text-center ">
                   <img
                     className="col-md-5 m-auto p-0 mt-2 header_logo"
-                    src={`https://api.thevucare.com/service/${Item?.serviceImg}`}
+                    src={`http://api.thevucare.com/service/${Item?.serviceImg}`}
                     alt=""
                     height={200}
                   />

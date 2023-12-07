@@ -19,7 +19,7 @@ export default function Booking() {
   const getServiceDetails = async () => {
     try {
       const response = await axios.get(
-        `https://api.thevucare.com/api/getservicedetails`
+        `http://api.thevucare.com/api/getservicedetails`
       );
       if (response.status === 200) {
         console.log(response.data.servicedetails);
