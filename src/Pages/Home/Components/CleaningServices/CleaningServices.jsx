@@ -17,7 +17,7 @@ export default function CleaningServices() {
   const getAllCategory = async () => {
     try {
       let res = await axios.get(
-        "http://api.thevucare.com/api/userapp/getappsubcat"
+        "https://api.thevucare.com/api/userapp/getappsubcat"
       );
       if (res.status === 200) {
         let data = res.data.subcategory.filter((ele) =>
@@ -73,7 +73,7 @@ export default function CleaningServices() {
                         <img
                           width={200}
                           height={130}
-                        src={`http://api.thevucare.com/subcat/${ele?.subcatimg}`}
+                        src={`https://api.thevucare.com/subcat/${ele?.subcatimg}`}
                           alt=""
                         />
                       </div>

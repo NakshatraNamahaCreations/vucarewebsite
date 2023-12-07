@@ -36,7 +36,7 @@
               width={50}
               height={50}
               categoryImg
-              src={`http://api.thevucare.com/category/${ele?.categoryImg}`}
+              src={`https://api.thevucare.com/category/${ele?.categoryImg}`}
               alt=""
             />{" "}
           </div>
@@ -65,7 +65,7 @@
               className="col-md-11 m-auto "
               width={380}
               height={180}
-              src={`http://api.thevucare.com/webBanner/${item.banner}`}
+              src={`https://api.thevucare.com/webBanner/${item.banner}`}
               alt=""
             />
           </div>
@@ -91,7 +91,7 @@
                 <img
                   width={150}
                   height={150}
-                  src={`http://api.thevucare.com/subcat/${item?.subcatimg}`}
+                  src={`https://api.thevucare.com/subcat/${item?.subcatimg}`}
                   className=" shadow bg-white rounded "
                   alt=""
                 />

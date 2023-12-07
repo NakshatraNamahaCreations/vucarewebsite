@@ -119,7 +119,7 @@ export default function NabarCompo() {
                 <img
                   width={30}
                   height={30}
-                  src={`http://api.thevucare.com/customer/${userData?.customerprofile}`}
+                  src={`https://api.thevucare.com/customer/${userData?.customerprofile}`}
                   className="me-2"
                   alt=""
                   style={{ borderRadius: "100px" }}
